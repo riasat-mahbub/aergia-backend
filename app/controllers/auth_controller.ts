@@ -11,10 +11,10 @@ export default class AuthController {
   }
 
   async login({ request, response, auth }: HttpContext) {
-    const { email, password } = request.only(['email', 'password'])
+    const { email, password, rememberMe } = request.only(['email', 'password', 'rememberMe'])
     
     const user = await User.verifyCredentials(email, password)
-    await auth.use('web').login(user)
+    await auth.use('web').login(user, !!rememberMe)
     
     return response.ok({ user: { id: user.id, email: user.email, fullName: user.fullName } })
   }
