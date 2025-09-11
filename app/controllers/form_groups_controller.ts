@@ -1,4 +1,84 @@
-// import type { HttpContext } from '@adonisjs/core/http'
+import Cv from "#models/cv"
+import FormGroup from "#models/form_group"
+import { HttpContext } from "@adonisjs/core/http"
 
 export default class FormGroupsController {
+        async readAll({params, response}: HttpContext){
+            const cv = await Cv.query().where('id', params.cv_id).firstOrFail()
+            
+            await cv?.load('formGroups')
+            return response.ok({formHolders: cv.formGroups})
+        }
+    
+        async create({params, request, response}:HttpContext){
+            const cv_id = params.cv_id
+            const {title, type, data} = request.only(['title', 'type', 'data'])
+
+            try{
+                const cv = await Cv.query().where('id', cv_id).firstOrFail()
+
+                const formGroup = new FormGroup
+                formGroup.cvId = cv_id
+                formGroup.title = title
+                formGroup.type = type
+                formGroup.data = data
+
+                await formGroup.save()
+                response.ok({formGroup})
+
+            }catch(exception){
+                response.abort({message:"Failed to create form group"})
+            }
+    
+        }
+    
+        async read({ params, response }: HttpContext) {
+            try{
+                const formGroup = await FormGroup.query()
+                .where('id', params.id)
+                .andWhere('cv_id', params.cv_id)
+                .firstOrFail()
+    
+                return response.ok({ formGroup })
+            }catch(exception){
+                response.abort({message: "Cannot find form group"})
+            }
+    
+    
+        }
+
+        async update({ params, request, response }: HttpContext) {
+            try{
+                const formGroup = await FormGroup.query()
+                .where('id', params.id)
+                .andWhere('cv_id', params.cv_id)
+                .firstOrFail()
+
+                const { title, type, data } = request.only(['title', 'type', 'data'])
+                formGroup.merge({ title, type, data })
+                await formGroup.save()
+
+                return response.ok({ formGroup })
+            }catch(exception){
+                response.abort({message: "Cannot delete form group"})
+            }
+
+        }
+    
+    
+        async delete({ params, response }: HttpContext) {
+    
+            try{
+                const formGroup = await FormGroup.query()
+                .where('id', params.id)
+                .andWhere('cv_id', params.cv_id)
+                .firstOrFail()
+                
+                await formGroup.delete()
+                return response.ok({ message: "Form Group delete successfully" })
+            }catch(exception){
+                response.abort({message: "Cannot delete form group"})
+            }
+            
+        }
 }
