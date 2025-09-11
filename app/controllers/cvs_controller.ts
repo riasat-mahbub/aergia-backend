@@ -19,8 +19,13 @@ export default class CvsController {
             cv.title = title
             await cv.save()
             
-            const {userId, ...data} = cv
-            return response.created({message: 'CV created successfully', data: data})
+            const returnData = {
+                title: cv.title,
+                id: cv.id,
+                createdAt: cv.createdAt,
+                updatedAt: cv.updatedAt
+            }
+            return response.created({message: 'CV created successfully', data: returnData})
         }else{
             return response.abort({message: "Invalid User"})
         }
@@ -34,7 +39,14 @@ export default class CvsController {
             .andWhere('user_id', auth.user!.id)
             .firstOrFail()
 
-            return response.ok({ cv })
+            const returnData = {
+                title: cv.title,
+                id: cv.id,
+                createdAt: cv.createdAt,
+                updatedAt: cv.updatedAt
+            }
+
+            return response.ok({message: 'CV found successfully', data: returnData })
         }catch(exception){
             response.abort({message: exception.message})
         }
