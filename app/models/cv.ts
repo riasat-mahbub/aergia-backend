@@ -9,6 +9,9 @@ export default class Cv extends BaseModel {
   declare id: number
 
   @column()
+  declare title: string
+
+  @column()
   declare userId: number
 
   @belongsTo(() => User)

@@ -10,15 +10,17 @@ export default class CvsController {
         return response.ok({cvs: user?.cvs})
     }
 
-    async create({auth, response}:HttpContext){
+    async create({auth, request, response}:HttpContext){
         const user = auth.user
-
+        const {title} = request.only(['title'])
         if(user){
             const cv = new Cv
             cv.userId = user?.id
+            cv.title = title
             await cv.save()
-
-            return response.created({message: 'CV created successfully', data: cv})
+            
+            const {userId, ...data} = cv
+            return response.created({message: 'CV created successfully', data: data})
         }else{
             return response.abort({message: "Invalid User"})
         }
