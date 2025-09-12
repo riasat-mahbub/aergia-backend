@@ -22,6 +22,7 @@ export default class FormGroupsController {
                 formGroup.title = title
                 formGroup.type = type
                 formGroup.data = data
+                formGroup.visible = true
 
                 await formGroup.save()
                 response.ok({formGroup})
@@ -54,13 +55,13 @@ export default class FormGroupsController {
                 .andWhere('cv_id', params.cv_id)
                 .firstOrFail()
 
-                const { title, type, data } = request.only(['title', 'type', 'data'])
-                formGroup.merge({ title, type, data })
+                const { title, type, data, visible } = request.only(['title', 'type', 'data', 'visible'])
+                formGroup.merge({ title, type, data, visible })
                 await formGroup.save()
 
                 return response.ok({ formGroup })
             }catch(exception){
-                response.abort({message: "Cannot delete form group"})
+                response.abort({message: "Cannot update form group"})
             }
 
         }
