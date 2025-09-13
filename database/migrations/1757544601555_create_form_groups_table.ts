@@ -5,11 +5,11 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').notNullable()
+      table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'))
       table.string('title')
       table.string('type')
       table.boolean('visible')
-      table.integer('cv_id').references('id').inTable('cvs').onDelete('CASCADE').notNullable()
+      table.uuid('cv_id').references('id').inTable('cvs').onDelete('CASCADE').notNullable()
       table.text('data')
       table.timestamp('created_at')
       table.timestamp('updated_at')

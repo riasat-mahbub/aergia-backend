@@ -5,7 +5,7 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class FormGroup extends BaseModel {
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare title:string
@@ -14,7 +14,7 @@ export default class FormGroup extends BaseModel {
   declare type:string
 
   @column()
-  declare cvId: number
+  declare cvId: string
 
   @column()
   declare visible: boolean

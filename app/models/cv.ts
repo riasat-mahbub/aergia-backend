@@ -6,13 +6,13 @@ import FormGroup from './form_group.js'
 
 export default class Cv extends BaseModel {
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare title: string
 
   @column()
-  declare userId: number
+  declare userId: string
 
   @belongsTo(() => User)
   public user!: BelongsTo<typeof User>
