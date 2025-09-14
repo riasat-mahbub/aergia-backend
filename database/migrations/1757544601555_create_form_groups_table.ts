@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'))
       table.string('title')
       table.string('type')
+      table.increments('order')
       table.boolean('visible')
       table.uuid('cv_id').references('id').inTable('cvs').onDelete('CASCADE').notNullable()
       table.text('data')

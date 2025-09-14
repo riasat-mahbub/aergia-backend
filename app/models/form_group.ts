@@ -17,6 +17,9 @@ export default class FormGroup extends BaseModel {
   declare cvId: string
 
   @column()
+  declare order: number
+
+  @column()
   declare visible: boolean
 
   @belongsTo(() => Cv)

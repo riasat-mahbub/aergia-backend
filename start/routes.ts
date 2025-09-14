@@ -42,6 +42,7 @@ router.group(() =>{
   router.put('/:cv_id/:id', [FormGroupsController, 'update'])
   router.delete('/:cv_id/:id', [FormGroupsController, 'delete'])
   router.get('/:cv_id/:id', [FormGroupsController, 'read'])
+  router.post('/:cv_id/reorder', [FormGroupsController, 'reorder'])
 }).
 prefix('formGroup').
 middleware(middleware.auth())

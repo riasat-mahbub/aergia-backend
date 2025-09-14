@@ -55,13 +55,43 @@ export default class FormGroupsController {
                 .andWhere('cv_id', params.cv_id)
                 .firstOrFail()
 
-                const { title, type, data, visible } = request.only(['title', 'type', 'data', 'visible'])
-                formGroup.merge({ title, type, data, visible })
+                const input = request.only(['title', 'type', 'data', 'visible', 'order'])
+
+                formGroup.merge(input)
                 await formGroup.save()
 
                 return response.ok({ formGroup })
             }catch(exception){
                 response.abort({message: "Cannot update form group"})
+            }
+
+        }
+
+        async reorder({params, request, response}: HttpContext){
+            const {activeId, overId} = request.only(['activeId', 'overId'])
+
+            try{
+
+                const activeFormGroup =  await FormGroup.query()
+                    .where('id', activeId)
+                    .andWhere('cv_id', params.cv_id)
+                    .firstOrFail()
+
+                const overFormGroup = await FormGroup.query()
+                    .where('id', overId)
+                    .andWhere('cv_id', params.cv_id)
+                    .firstOrFail()
+
+                const temp = activeFormGroup.order
+                activeFormGroup.order = overFormGroup.order
+                overFormGroup.order = temp
+
+                activeFormGroup.save()
+                overFormGroup.save()
+
+                return response.ok({message: "Reordered Successfully"})
+            }catch(exception){
+                response.abort({message: "Cannot reorder form group"})
             }
 
         }
