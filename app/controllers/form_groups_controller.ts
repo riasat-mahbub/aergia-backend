@@ -12,7 +12,7 @@ export default class FormGroupsController {
     
         async create({params, request, response}:HttpContext){
             const cv_id = params.cv_id
-            const {title, type, data} = request.only(['title', 'type', 'data'])
+            const {title, type, data, style} = request.only(['title', 'type', 'data', 'style'])
 
             try{
                 const cv = await Cv.query().where('id', cv_id).firstOrFail()
@@ -22,6 +22,7 @@ export default class FormGroupsController {
                 formGroup.title = title
                 formGroup.type = type
                 formGroup.data = data
+                formGroup.style = style
                 formGroup.visible = true
 
                 await formGroup.save()
@@ -55,7 +56,7 @@ export default class FormGroupsController {
                 .andWhere('cv_id', params.cv_id)
                 .firstOrFail()
 
-                const input = request.only(['title', 'type', 'data', 'visible', 'order'])
+                const input = request.only(['title', 'type', 'data', 'visible', 'order', 'style'])
 
                 formGroup.merge(input)
                 await formGroup.save()

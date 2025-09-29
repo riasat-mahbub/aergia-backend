@@ -26,7 +26,10 @@ export default class FormGroup extends BaseModel {
   public Cv!: BelongsTo<typeof Cv>
 
   @column()
-  declare data: string
+  declare data: Record<string, any>[]
+
+  @column()
+  declare style: Record<string, any>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
