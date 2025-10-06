@@ -15,7 +15,7 @@ export default class FormGroupsController {
             const {title, type, data, style} = request.only(['title', 'type', 'data', 'style'])
 
             try{
-                const cv = await Cv.query().where('id', cv_id).firstOrFail()
+                await Cv.query().where('id', cv_id).firstOrFail()
 
                 const formGroup = new FormGroup
                 formGroup.cvId = cv_id

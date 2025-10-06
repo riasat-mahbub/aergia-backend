@@ -12,16 +12,18 @@ export default class CvsController {
 
     async create({auth, request, response}:HttpContext){
         const user = auth.user
-        const {title} = request.only(['title'])
+        const {title, template} = request.only(['title', 'template'])
         if(user){
             const cv = new Cv
             cv.userId = user?.id
             cv.title = title
+            cv.template = template
             await cv.save()
             
             const returnData = {
                 title: cv.title,
                 id: cv.id,
+                template: cv.template,
                 createdAt: cv.createdAt,
                 updatedAt: cv.updatedAt
             }
@@ -42,6 +44,7 @@ export default class CvsController {
             const returnData = {
                 title: cv.title,
                 id: cv.id,
+                template: cv.template,
                 createdAt: cv.createdAt,
                 updatedAt: cv.updatedAt
             }
