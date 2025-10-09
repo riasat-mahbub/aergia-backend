@@ -77,7 +77,7 @@ export default class CvsController {
     }
 
 
-    async reorder({auth, params, request, response}: HttpContext){
+    async reorder({auth, request, response}: HttpContext){
         const {activeId, overId} = request.only(['activeId', 'overId'])
 
         try{
@@ -89,7 +89,7 @@ export default class CvsController {
 
             const overCV = await Cv.query()
             .where('id', overId)
-            .andWhere('cv_id', params.cv_id)
+            .andWhere('user_id',  auth.user!.id)
             .firstOrFail()
 
             const temp = activeCV.order
