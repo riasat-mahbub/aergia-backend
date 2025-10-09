@@ -31,6 +31,8 @@ router.group(() =>{
   router.get('/', [CvsController, 'readAll'])
   router.post('/', [CvsController, 'create'])
   router.delete('/:id', [CvsController, 'delete'])
+  router.put('/:id', [CvsController, 'update'])
+  router.put('/:id/reorder', [CvsController, 'reorder'])
   router.get('/:id', [CvsController, 'read'])
 }).
 prefix('cv').
