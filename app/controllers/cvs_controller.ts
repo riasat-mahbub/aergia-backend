@@ -71,7 +71,37 @@ export default class CvsController {
 
             return response.ok({ cv })
         }catch(exception){
-            response.abort({message: "Cannot update form group"})
+            response.abort({message: "Cannot update CV"})
+        }
+
+    }
+
+
+    async reorder({auth, params, request, response}: HttpContext){
+        const {activeId, overId} = request.only(['activeId', 'overId'])
+
+        try{
+
+            const activeCV =  await Cv.query()
+            .where('id', activeId)
+            .andWhere('user_id', auth.user!.id)
+            .firstOrFail()
+
+            const overCV = await Cv.query()
+            .where('id', overId)
+            .andWhere('cv_id', params.cv_id)
+            .firstOrFail()
+
+            const temp = activeCV.order
+            activeCV.order = overCV.order
+            overCV.order = temp
+
+            activeCV.save()
+            overCV.save()
+
+            return response.ok({message: "Reordered Successfully"})
+        }catch(exception){
+            response.abort({message: "Cannot reorder CVs"})
         }
 
     }
