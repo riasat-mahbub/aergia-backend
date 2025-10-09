@@ -17,6 +17,9 @@ export default class Cv extends BaseModel {
   @column()
   declare template: string
 
+  @column()
+  declare order: number
+
   @belongsTo(() => User)
   public user!: BelongsTo<typeof User>
 

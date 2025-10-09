@@ -57,6 +57,25 @@ export default class CvsController {
 
     }
 
+    async update({ auth, params, request, response }: HttpContext) {
+        try{
+            const cv = await Cv.query()
+            .where('id', params.id)
+            .andWhere('user_id', auth.user!.id)
+            .firstOrFail()
+
+            const input = request.only(['title', 'template', 'order'])
+
+            cv.merge(input)
+            await cv.save()
+
+            return response.ok({ cv })
+        }catch(exception){
+            response.abort({message: "Cannot update form group"})
+        }
+
+    }
+
 
     async delete({ auth, params, response }: HttpContext) {
 
