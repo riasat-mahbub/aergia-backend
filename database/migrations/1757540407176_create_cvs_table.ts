@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'))
       table.string('title')
       table.string('template')
+      table.increments('order')
       table.uuid('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
