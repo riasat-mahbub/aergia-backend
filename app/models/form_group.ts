@@ -29,6 +29,9 @@ export default class FormGroup extends BaseModel {
   declare data: Record<string, any>[]
 
   @column()
+  declare structure: Record<string, any>
+
+  @column()
   declare style: Record<string, any>
 
   @column.dateTime({ autoCreate: true })
