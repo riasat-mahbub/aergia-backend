@@ -13,6 +13,7 @@ export default class extends BaseSchema {
       table.uuid('cv_id').references('id').inTable('cvs').onDelete('CASCADE').notNullable()
       table.jsonb('data')
       table.jsonb('style')
+      table.jsonb('structure')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
