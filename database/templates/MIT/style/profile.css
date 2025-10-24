@@ -1,0 +1,52 @@
+.sectionTitle {
+  font-size: 14px;
+  margin-right: 10px;
+  color: black;
+  margin-bottom: 8px;
+  border-bottom: 1px;
+}
+
+.container {
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.contactRow {
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  align-items: center;
+}
+
+.contactItem {
+  font-size: 10px;
+  margin-right: 8px;
+  color: black;
+}
+
+.contactUrl {
+  font-size: 10px;
+  margin-right: 8px;
+  color: black;
+  text-decoration: none;
+}
+
+.contactIcon {
+  font-size: 10px;
+  margin-right: 2px;
+  color: black;
+}
+
+.summary {
+  font-size: 10px;
+  margin-top: 8px;
+  text-align: justify;
+  color: black;
+}

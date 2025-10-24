@@ -1,0 +1,49 @@
+{
+  "type": "Div",
+  "style": "container",
+  "children": [
+    {
+      "type": "Div",
+      "style": "titleRow",
+      "children": [
+        {
+          "type": "Text",
+          "style": "title",
+          "bind": "data.project"
+        },
+        {
+          "type": "Div",
+          "style": "dateRow",
+          "children": [
+            {
+              "type": "Text",
+              "style": "date",
+              "bind": "data.startDate"
+            },
+            {
+              "type": "Text",
+              "style": "separator",
+              "text": "-",
+              "if": "form.startDate"
+            },
+            {
+              "type": "Text",
+              "style": "date",
+              "bind": "data.endDate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Text",
+      "style": "subtitle",
+      "bind": "data.subtitle"
+    },
+    {
+      "type": "Html",
+      "style": "description",
+      "bind": "data.description"
+    }
+  ]
+}

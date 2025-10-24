@@ -1,0 +1,51 @@
+.sectionTitle {
+  font-size: 14px;
+  margin-right: 10px;
+  color: black;
+  margin-bottom: 8px;
+  border-bottom: 1px;
+}
+
+.container {
+  margin-bottom: 12px;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+}
+
+.dateRow {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date {
+  font-size: 10px;
+  color: black;
+}
+
+.separator {
+  font-size: 10px;
+  color: black;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: black;
+}
+
+.description {
+  font-size: 10px;
+  margin: 0px;
+  padding: 0px;
+  line-height: 1px;
+  color: black;
+}

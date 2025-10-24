@@ -1,0 +1,27 @@
+{
+  "type": "Div",
+  "style": "container",
+  "children": [
+    {
+      "type": "Div",
+      "style": "row",
+      "children": [
+        {
+          "type": "Text",
+          "style": "name",
+          "bind": "data.skill"
+        },
+        {
+          "type": "Text",
+          "style": "rating",
+          "text": "'.'.repeat(form.rating || 0)"
+        }
+      ]
+    },
+    {
+      "type": "Html",
+      "style": "description",
+      "bind": "data.description"
+    }
+  ]
+}

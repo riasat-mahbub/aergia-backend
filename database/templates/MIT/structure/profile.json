@@ -1,0 +1,65 @@
+{
+  "type": "Div",
+  "style": "container",
+  "children": [
+    {
+      "type": "Text",
+      "style": "name",
+      "bind": "data.name"
+    },
+    {
+      "type": "Div",
+      "style": "contactRow",
+      "children": [
+        {
+          "type": "map",
+          "source": "data.infos",
+          "bind": "info",
+          "template": {
+            "type": "Div",
+            "style": "contactRow",
+            "children": [
+              {
+                "type": "Icon",
+                "style": "contactIcon",
+                "bind": "info.icon"
+              },
+              {
+                "type": "Text",
+                "style": "contactItem",
+                "bind": "info.title"
+              }
+            ]
+          }
+        },
+        {
+          "type": "map",
+          "source": "form.urls",
+          "bind": "url",
+          "template": {
+            "type": "Div",
+            "style": "contactRow",
+            "children": [
+              {
+                "type": "Icon",
+                "style": "contactIcon",
+                "bind": "url.icon"
+              },
+              {
+                "type": "Link",
+                "style": "contactUrl",
+                "bind": "url.url",
+                "textbind": "url.title"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Html",
+      "style": "summary",
+      "bind": "form.summary"
+    }
+  ]
+}

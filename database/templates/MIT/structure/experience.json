@@ -1,0 +1,60 @@
+{
+  "type": "Div",
+  "style": "container",
+  "children": [
+    {
+      "type": "Div",
+      "style": "titleRow",
+      "children": [
+        {
+          "type": "Text",
+          "style": "title",
+          "bind": "data.company"
+        },
+        {
+          "type": "Div",
+          "style": "dateRow",
+          "children": [
+            {
+              "type": "Text",
+              "style": "date",
+              "bind": "data.startDate"
+            },
+            {
+              "type": "Text",
+              "style": "separator",
+              "text": "-",
+              "if": "form.startDate"
+            },
+            {
+              "type": "Text",
+              "style": "date",
+              "bind": "data.endDate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Div",
+      "style": "subTitleRow",
+      "children": [
+        {
+          "type": "Text",
+          "style": "subtitle",
+          "bind": "data.jobTitle"
+        },
+        {
+          "type": "Text",
+          "style": "location",
+          "bind": "data.location"
+        }
+      ]
+    },
+    {
+      "type": "Html",
+      "style": "description",
+      "bind": "data.description"
+    }
+  ]
+}
