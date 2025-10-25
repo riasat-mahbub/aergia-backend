@@ -1,5 +1,6 @@
 import Cv from "#models/cv"
 import FormGroup from "#models/form_group"
+import { TemplateService } from "#services/TemplateService"
 import { HttpContext } from "@adonisjs/core/http"
 
 export default class FormGroupsController {
@@ -12,17 +13,19 @@ export default class FormGroupsController {
     
         async create({params, request, response}:HttpContext){
             const cv_id = params.cv_id
-            const {title, type, data, style} = request.only(['title', 'type', 'data', 'style'])
+            const {title, type, data} = request.only(['title', 'type', 'data'])
 
             try{
-                await Cv.query().where('id', cv_id).firstOrFail()
+                const CV = await Cv.query().where('id', cv_id).select('template').firstOrFail()
+                const template = CV.template
 
                 const formGroup = new FormGroup
                 formGroup.cvId = cv_id
                 formGroup.title = title
                 formGroup.type = type
                 formGroup.data = data
-                formGroup.style = style
+                formGroup.style = await TemplateService.getStyle(template, type)
+                formGroup.structure = await TemplateService.getStructure(template, type)
                 formGroup.visible = true
 
                 await formGroup.save()
