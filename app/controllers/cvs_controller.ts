@@ -13,7 +13,7 @@ export default class CvsController {
     async create({auth, request, response}:HttpContext){
         const user = auth.user
         const {title, template} = request.only(['title', 'template'])
-        if(user){
+        if(user && template){
             const cv = new Cv
             cv.userId = user?.id
             cv.title = title
