@@ -24,7 +24,7 @@
               "type": "Text",
               "style": "separator",
               "text": "-",
-              "if": "form.startDate"
+              "if": "data.startDate"
             },
             {
               "type": "Text",

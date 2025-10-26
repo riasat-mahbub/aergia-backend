@@ -34,7 +34,7 @@
         },
         {
           "type": "map",
-          "source": "form.urls",
+          "source": "data.urls",
           "bind": "url",
           "template": {
             "type": "Div",
@@ -59,7 +59,7 @@
     {
       "type": "Html",
       "style": "summary",
-      "bind": "form.summary"
+      "bind": "data.summary"
     }
   ]
 }

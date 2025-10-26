@@ -14,7 +14,7 @@
         {
           "type": "Text",
           "style": "rating",
-          "text": "'.'.repeat(form.rating || 0)"
+          "text": "'.'.repeat(data.rating || 0)"
         }
       ]
     },
