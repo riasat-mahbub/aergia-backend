@@ -1,15 +1,15 @@
 {
   "type": "Div",
-  "style": "container",
+  "style": ".container",
   "children": [
     {
       "type": "Text",
-      "style": "name",
+      "style": ".name",
       "bind": "data.name"
     },
     {
       "type": "Div",
-      "style": "contactRow",
+      "style": ".contactRow",
       "children": [
         {
           "type": "map",
@@ -17,16 +17,16 @@
           "bind": "info",
           "template": {
             "type": "Div",
-            "style": "contactRow",
+            "style": ".contactRow",
             "children": [
               {
                 "type": "Icon",
-                "style": "contactIcon",
+                "style": ".contactIcon",
                 "bind": "info.icon"
               },
               {
                 "type": "Text",
-                "style": "contactItem",
+                "style": ".contactItem",
                 "bind": "info.title"
               }
             ]
@@ -38,16 +38,16 @@
           "bind": "url",
           "template": {
             "type": "Div",
-            "style": "contactRow",
+            "style": ".contactRow",
             "children": [
               {
                 "type": "Icon",
-                "style": "contactIcon",
+                "style": ".contactIcon",
                 "bind": "url.icon"
               },
               {
                 "type": "Link",
-                "style": "contactUrl",
+                "style": ".contactUrl",
                 "bind": "url.url",
                 "textbind": "url.title"
               }

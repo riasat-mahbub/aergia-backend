@@ -1,34 +1,34 @@
 {
   "type": "Div",
-  "style": "container",
+  "style": ".container",
   "children": [
     {
       "type": "Div",
-      "style": "titleRow",
+      "style": ".titleRow",
       "children": [
         {
           "type": "Text",
-          "style": "title",
+          "style": ".title",
           "bind": "data.project"
         },
         {
           "type": "Div",
-          "style": "dateRow",
+          "style": ".dateRow",
           "children": [
             {
               "type": "Text",
-              "style": "date",
+              "style": ".date",
               "bind": "data.startDate"
             },
             {
               "type": "Text",
-              "style": "separator",
+              "style": ".separator",
               "text": "-",
               "if": "data.startDate"
             },
             {
               "type": "Text",
-              "style": "date",
+              "style": ".date",
               "bind": "data.endDate"
             }
           ]
@@ -37,12 +37,12 @@
     },
     {
       "type": "Text",
-      "style": "subtitle",
+      "style": ".subtitle",
       "bind": "data.subtitle"
     },
     {
       "type": "Html",
-      "style": "description",
+      "style": ".description",
       "bind": "data.description"
     }
   ]

@@ -1,26 +1,26 @@
 {
   "type": "Div",
-  "style": "container",
+  "style": ".container",
   "children": [
     {
       "type": "Div",
-      "style": "row",
+      "style": ".row",
       "children": [
         {
           "type": "Text",
-          "style": "name",
+          "style": ".name",
           "bind": "data.skill"
         },
         {
           "type": "Text",
-          "style": "rating",
+          "style": ".rating",
           "text": "'.'.repeat(data.rating || 0)"
         }
       ]
     },
     {
       "type": "Html",
-      "style": "description",
+      "style": ".description",
       "bind": "data.description"
     }
   ]
