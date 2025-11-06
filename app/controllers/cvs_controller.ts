@@ -51,7 +51,7 @@ export default class CvsController {
 
             return response.ok({message: 'CV found successfully', data: returnData })
         }catch(exception){
-            response.abort({message: "Error rading cv"})
+            response.abort({message: "Error reading cv"})
         }
 
 
