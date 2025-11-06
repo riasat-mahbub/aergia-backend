@@ -51,7 +51,7 @@ export default class CvsController {
 
             return response.ok({message: 'CV found successfully', data: returnData })
         }catch(exception){
-            response.abort({message: exception.message})
+            response.abort({message: "Error rading cv"})
         }
 
 
@@ -118,7 +118,7 @@ export default class CvsController {
             await cv.delete()
             return response.ok({ message: 'CV deleted successfully'})
         }catch(exception){
-            response.abort({message: exception.message})
+            response.abort({message: "Error deleting cv"})
         }
         
     }
