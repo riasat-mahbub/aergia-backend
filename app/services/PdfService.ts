@@ -117,7 +117,10 @@ export class PdfService {
       case 'Html':
         const htmlValue = this.getValue(node.bind, data, locals) || ''
         return `<div class="${className}">${htmlValue}</div>`
-        
+      
+      case "Raw":
+        return `<span class="${className}">${node.bind}</span>`
+      
       case 'Icon':
         const iconValue = this.getValue(node.bind, data, locals) || ''
         return `<span class="${className}">${iconValue}</span>`
