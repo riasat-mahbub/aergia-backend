@@ -22,7 +22,12 @@
               {
                 "type": "Icon",
                 "style": ".contactIcon",
-                "bind": "info.icon"
+                "bind": "info.type"
+              },
+              {
+                "type": "Raw",
+                "style": ".contactItem",
+                "bind": ":"
               },
               {
                 "type": "Text",
