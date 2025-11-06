@@ -13,6 +13,7 @@ const FormGroupsController = () => import('#controllers/form_groups_controller')
 const CvsController = () => import('#controllers/cvs_controller')
 const UsersController = () => import('#controllers/users_controller')
 const AuthController = () => import('#controllers/auth_controller')
+const PdfController = () => import('#controllers/pdf_controller')
 
 router.get('/', async () => {
   return {
@@ -34,6 +35,7 @@ router.group(() =>{
   router.put('/:id', [CvsController, 'update'])
   router.post('/reorder', [CvsController, 'reorder'])
   router.get('/:id', [CvsController, 'read'])
+  router.get('/:id/pdf', [PdfController, 'generate'])
 }).
 prefix('cv').
 middleware(middleware.auth())
