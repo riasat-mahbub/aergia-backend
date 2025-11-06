@@ -1,11 +1,10 @@
 .sectionTitle {
+  color: black;
   font-size: 14px;
   margin-right: 10px;
-  color: black;
   margin-bottom: 8px;
-  border-bottom: 1px;
+  border-bottom: 1px solid black;
 }
-
 .container {
   margin-bottom: 12px;
 }
