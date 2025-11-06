@@ -47,17 +47,18 @@ export class PdfService {
     let styles = ''
     
     for (const formGroup of formGroups) {
-      try {
-        const styleJson = await TemplateService.getStyle(template, formGroup.type)
-        const cssContent = CssJSON.jsonToCss(styleJson)
-        styles += cssContent + '\n'
-      } catch (error) {
-        // Skip if template style not found
-      }
-      
       if (formGroup.style) {
-        const customStyles = CssJSON.jsonToCss(formGroup.style)
-        styles += customStyles + '\n'
+        const cssContent = CssJSON.jsonToCss(formGroup.style)
+        console.log(formGroup.id, formGroup.type, cssContent)
+        styles += cssContent + '\n'
+      } else {
+        try {
+          const styleJson = await TemplateService.getStyle(template, formGroup.type)
+          const cssContent = CssJSON.jsonToCss(styleJson)
+          styles += cssContent + '\n'
+        } catch (error) {
+          // Skip if template style not found
+        }
       }
     }
     
@@ -71,11 +72,10 @@ export class PdfService {
       const structure = await TemplateService.getStructure(template, formGroup.type)
       const formData = typeof formGroup.data === 'string' ? JSON.parse(formGroup.data) : formGroup.data
       
+      content += `<div class="th-${formGroup.id}">`
       if (formGroup.type !== 'profile') {
         content += `<div class="sectionTitle">${formGroup.title}</div>`
       }
-      
-      content += `<div class="${formGroup.id}">`
       content += this.renderStructure(structure, formData)
       content += '</div>'
     }

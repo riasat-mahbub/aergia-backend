@@ -24,17 +24,33 @@ export default class FormGroupsController {
                 formGroup.title = title
                 formGroup.type = type
                 formGroup.data = data
-                formGroup.style = await TemplateService.getStyle(template, type)
                 formGroup.structure = await TemplateService.getStructure(template, type)
                 formGroup.visible = true
 
                 await formGroup.save()
+                
+                // Get template style and prefix with form group ID
+                const templateStyle = await TemplateService.getStyle(template, type)
+                formGroup.style = this.prefixStyleWithId(templateStyle, "th-"+formGroup.id)
+                await formGroup.save()
+                
                 response.ok({formGroup})
 
             }catch(exception){
                 response.abort({message:"Failed to create form group"})
             }
     
+        }
+        
+        private prefixStyleWithId(style: Record<string, Record<string, string>>, id: string): Record<string, Record<string, string>> {
+            const prefixedStyle: Record<string, Record<string, string>> = {}
+            
+            for (const selector in style) {
+                const newSelector = `.${id} ${selector}`
+                prefixedStyle[newSelector] = style[selector]
+            }
+            
+            return prefixedStyle
         }
     
         async read({ params, response }: HttpContext) {
