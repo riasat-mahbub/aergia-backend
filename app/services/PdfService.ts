@@ -287,7 +287,8 @@ export class PdfService {
 
   private renderNode(node: any, data: any, locals: Record<string, any> = {}): string {
     if (!node) return ''
-    if (node.visible === false) return '' // Add visibility check
+    if (node.visible === false) return ''
+    if (node.if && !this.evaluateCondition(node.if, data, locals)) return ''
     
     const className = node.style ? (node.style.startsWith('.') ? node.style.slice(1) : node.style) : ''
     
@@ -383,5 +384,22 @@ export class PdfService {
     }
     
     return current
+  }
+  
+  private evaluateCondition(condition: string, data: any, locals: Record<string, any> = {}): boolean {
+    if (!condition) return true
+    
+    const tokens = condition.split(/\s+/)
+    const evaluated = tokens.map(token => {
+      if (token === '&&' || token === '||' || token === '!') return token
+      const value = this.getValue(token, data, locals)
+      return value ? 'true' : 'false'
+    }).join(' ')
+    
+    try {
+      return eval(evaluated) as boolean
+    } catch {
+      return false
+    }
   }
 }
