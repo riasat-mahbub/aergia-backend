@@ -113,7 +113,7 @@ export class PdfService {
         
       case 'Text':
         const value = this.getValue(node.bind, data, locals) || ''
-        return `<span class="${className}">${value}</span>`
+        return `<p class="${className}">${value}</p>`
         
       case 'Html':
         const htmlValue = this.getValue(node.bind, data, locals) || ''
