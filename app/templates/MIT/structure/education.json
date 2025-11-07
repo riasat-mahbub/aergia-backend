@@ -45,6 +45,12 @@
           "bind": "data.degree"
         },
         {
+          "type": "Raw",
+          "style": ".date",
+          "bind": "-",
+          "if": "data.startDate && data.endDate"
+        },
+        {
           "type": "Text",
           "style": ".location",
           "bind": "data.location"

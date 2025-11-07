@@ -21,10 +21,10 @@
               "bind": "data.startDate"
             },
             {
-              "type": "Text",
-              "style": ".separator",
-              "text": "-",
-              "if": "data.startDate"
+              "type": "Raw",
+              "style": ".date",
+              "bind": "-",
+              "if": "data.startDate && data.endDate"
             },
             {
               "type": "Text",

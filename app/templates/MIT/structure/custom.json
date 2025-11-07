@@ -17,6 +17,12 @@
           "bind": "data.startDate"
         },
         {
+          "type": "Raw",
+          "style": ".date",
+          "bind": "-",
+          "if": "data.startDate && data.endDate"
+        },
+        {
           "type": "Text",
           "style": ".date",
           "bind": "data.endDate"
