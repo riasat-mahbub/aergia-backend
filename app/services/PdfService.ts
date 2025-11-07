@@ -306,7 +306,7 @@ export class PdfService {
       case 'Text':
         const value = this.getValue(node.bind, data, locals) || ''
         if (!value) return ''
-        return `<p class="${className}">${value}</p>`
+        return `<p class="${className}">${this.escapeHtml(String(value))}</p>`
         
       case 'Html':
         const htmlValue = this.getValue(node.bind, data, locals) || ''
@@ -315,18 +315,18 @@ export class PdfService {
       
       case "Raw":
         if (!node.bind) return ''
-        return `<span class="${className}">${node.bind}</span>`
+        return `<span class="${className}">${this.escapeHtml(node.bind)}</span>`
       
       case 'Icon':
         const iconValue = this.getValue(node.bind, data, locals) || ''
-        if (!iconValue) return '' // Skip empty
-        return `<span class="${className}">${iconValue}</span>`
+        if (!iconValue) return ''
+        return `<span class="${className}">${this.escapeHtml(String(iconValue))}</span>`
         
       case 'Link':
         const href = this.getValue(node.bind, data, locals) || '#'
-        if (!href || href === '#') return '' // Skip empty links
+        if (!href || href === '#') return ''
         const text = node.textbind ? this.getValue(node.textbind, data, locals) : href
-        return `<a class="${className}" href="${href}">${text}</a>`
+        return `<a class="${className}" href="${this.escapeHtml(String(href))}">${this.escapeHtml(String(text))}</a>`
         
       case 'map':
         const arrayData = this.getValue(node.source, data, locals) || []
@@ -401,5 +401,16 @@ export class PdfService {
     } catch {
       return false
     }
+  }
+  
+  private escapeHtml(text: string): string {
+    const map: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }
+    return text.replace(/[&<>"']/g, m => map[m])
   }
 }

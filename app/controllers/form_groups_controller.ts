@@ -1,6 +1,7 @@
 import Cv from "#models/cv"
 import FormGroup from "#models/form_group"
 import { TemplateService } from "#services/TemplateService"
+import { SanitizationService } from "#services/SanitizationService"
 import { HttpContext } from "@adonisjs/core/http"
 
 export default class FormGroupsController {
@@ -23,7 +24,7 @@ export default class FormGroupsController {
                 formGroup.cvId = cv_id
                 formGroup.title = title
                 formGroup.type = type
-                formGroup.data = data
+                formGroup.data = SanitizationService.sanitizeData(data)
                 formGroup.structure = await TemplateService.getStructure(template, type)
                 formGroup.visible = true
 
@@ -76,6 +77,10 @@ export default class FormGroupsController {
                 .firstOrFail()
 
                 const input = request.only(['title', 'type', 'data', 'visible', 'order', 'style'])
+                
+                if (input.data) {
+                    input.data = SanitizationService.sanitizeData(input.data)
+                }
 
                 formGroup.merge(input)
                 await formGroup.save()
