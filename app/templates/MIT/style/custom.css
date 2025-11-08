@@ -5,10 +5,12 @@
   margin-right: 10px;
   margin-bottom: 8px;
   border-bottom: 1px solid black;
+  font-weight: normal;
 }
 
 .container {
   font-family: 'Arimo', Arial, sans-serif;
+  font-weight: normal;
   margin-bottom: 12px;
 }
 
@@ -22,6 +24,7 @@
 .description {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 10px;
+  font-weight: normal;
   margin: 0px;
   padding: 0px;
   line-height: 1px;
@@ -30,6 +33,7 @@
 
 .dateRow {
   font-family: 'Arimo', Arial, sans-serif;
+  font-weight: normal;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,17 +42,20 @@
 .date {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 10px;
+  font-weight: normal;
   color: black;
 }
 
 .subtitle {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 11px;
+  font-weight: normal;
   color: black;
 }
 
 .location {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 10px;
+  font-weight: normal;
   color: black;
 }

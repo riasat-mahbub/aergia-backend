@@ -2,6 +2,7 @@
   font-family: 'Arimo', Arial, sans-serif;
   color: black;
   font-size: 14px;
+  font-weight: normal;
   margin-right: 10px;
   margin-bottom: 8px;
   border-bottom: 1px solid black;
@@ -9,11 +10,13 @@
 
 .container {
   font-family: 'Arimo', Arial, sans-serif;
+  font-weight: normal;
   margin-bottom: 8px;
 }
 
 .row {
   font-family: 'Arimo', Arial, sans-serif;
+  font-weight: normal;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,6 +26,7 @@
 .name {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 11px;
+  font-weight: normal;
   margin-right: 8px;
   color: black;
 }
@@ -37,6 +41,7 @@
 .description {
   font-family: 'Arimo', Arial, sans-serif;
   font-size: 10px;
+  font-weight: normal;
   margin-top: 2px;
   color: black;
 }
