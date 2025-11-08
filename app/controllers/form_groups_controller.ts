@@ -35,7 +35,6 @@ export default class FormGroupsController {
             
             return response.ok({formGroup})
         } catch(exception){
-            console.error('Error creating form group:', exception)
             return response.status(500).json({
                 message: "Failed to create form group",
                 error: exception.message
@@ -63,7 +62,6 @@ export default class FormGroupsController {
 
             return response.ok({ formGroup })
         } catch(exception){
-            console.error('Error reading form group:', exception)
             return response.status(404).json({message: "Cannot find form group"})
         }
     }
@@ -83,7 +81,6 @@ export default class FormGroupsController {
             await formGroup.save()
             return response.ok({ formGroup })
         } catch(exception){
-            console.error('Error updating form group:', exception)
             return response.status(500).json({message: "Cannot update form group"})
         }
     }
@@ -106,7 +103,6 @@ export default class FormGroupsController {
             await overFormGroup.save()
             return response.ok({message: "Reordered Successfully"})
         } catch(exception){
-            console.error('Error reordering form group:', exception)
             return response.status(500).json({message: "Cannot reorder form group"})
         }
     }
@@ -121,7 +117,6 @@ export default class FormGroupsController {
             await formGroup.delete()
             return response.ok({ message: "Form Group deleted successfully" })
         } catch(exception){
-            console.error('Error deleting form group:', exception)
             return response.status(500).json({message: "Cannot delete form group"})
         }
     }
