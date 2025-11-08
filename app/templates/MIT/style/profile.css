@@ -19,6 +19,8 @@
   font-weight: bold;
   text-align: center;
   color: black;
+  margin: 0px;
+  padding: 0px;
 }
 
 .contactRow {
@@ -38,6 +40,8 @@
   font-weight: normal;
   margin-right: 8px;
   color: black;
+  margin: 0px;
+  padding: 0px;
 }
 
 .contactUrl {
@@ -47,6 +51,8 @@
   margin-right: 8px;
   color: black;
   text-decoration: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 .contactIcon {
@@ -55,6 +61,8 @@
   font-weight: normal;
   margin-right: 2px;
   color: black;
+  margin: 0px;
+  padding: 0px;
 }
 
 .summary {
@@ -64,4 +72,6 @@
   margin-top: 8px;
   text-align: justify;
   color: black;
+  margin: 0px;
+  padding: 0px;
 }
