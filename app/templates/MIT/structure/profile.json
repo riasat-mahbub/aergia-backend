@@ -27,7 +27,8 @@
               {
                 "type": "Raw",
                 "style": ".contactItem",
-                "bind": ":"
+                "bind": ":",
+                "if":"info.type"
               },
               {
                 "type": "Text",
