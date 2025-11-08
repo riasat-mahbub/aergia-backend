@@ -81,6 +81,8 @@
   margin-bottom: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  line-height: 1px;
+  line-height: 1.2;
   color: black;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
