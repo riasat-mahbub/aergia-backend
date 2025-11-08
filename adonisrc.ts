@@ -84,25 +84,4 @@ export default defineConfig({
     ],
     forceExit: false,
   },
-
-   /*
-  |--------------------------------------------------------------------------
-  | Meta Files
-  |--------------------------------------------------------------------------
-  |
-  | Additional files to copy during the build process
-  |
-  */
-  metaFiles: [
-    {
-      pattern: 'templates/**/*.json',
-      reloadServer: false,
-    },
-    {
-      pattern: 'templates/**/*.css',
-      reloadServer: false,
-    },
-  ],
-
-
 })
